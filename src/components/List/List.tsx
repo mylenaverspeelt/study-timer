@@ -1,5 +1,5 @@
 import React from "react";
-
+import './listStyles.scss'
 //FUNCTION COMPONENT (não tem nada obrigatório, só o retorno do JSX mesmo)
 
 function List() {
@@ -16,10 +16,10 @@ function List() {
     }]
 
     return (
-        <aside>
+        <aside className="listaTarefas">
             <h2>Studies of the day:</h2>
             <ul>{tasks.map((item, index) => (
-                        <li key={index}>
+                        <li key={index} className="item">
                             <h3>{item.activity}</h3>
                             <span>{item.time}</span>
                         </li>
