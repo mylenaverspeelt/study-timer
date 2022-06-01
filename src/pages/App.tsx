@@ -1,12 +1,14 @@
 import React from 'react';
 import Form from '../components/Form/Form';
 import List from '../components/List/List';
-import './styles.scss'
+import style from './appStyles.module.scss'
+import Timer from '../components/Timer/Timer';
 
 function App() {
   return (
-    <div className="AppStyle">
+    <div className={style.AppStyle}>
      <Form />
+     <Timer />
      <List />
     </div>
   );
