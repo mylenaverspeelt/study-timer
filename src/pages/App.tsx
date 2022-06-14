@@ -4,29 +4,19 @@ import List from '../components/List/List';
 import style from './appStyles.module.scss'
 import Timer from '../components/Timer/Timer';
 import { useState } from 'react';
-
-
+import { ITask } from "../types/ITasks"
 
 function App() {
 
-  const [tasks, setTasks] = useState([{
-    activity: "React",
-    time: "02:00:00"
-}, {
-    activity: "Javascript",
-    time: "01:00:00"
-}, {
-    activity: 'Typescript',
-    time: "03:00:00"
-}]);
-
+  const [tasks, setTasks] = useState<ITask[]>([]);
+//tipando o valor inicial que pode ser ou um array vazio ou o array do ITasks
 
 
   return (
     <div className={style.AppStyle}>
-     <Form />
+     <Form setTasks={setTasks} />
      <Timer />
-     <List />
+     <List tasks={tasks}/>
     </div>
   );
 }
