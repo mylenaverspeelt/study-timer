@@ -3,19 +3,24 @@ import Item from './Item/Item'
 import {ITask} from "../../types/ITasks"
 //FUNCTION COMPONENT (só o retorno do JSX mesmo)
 
+interface Props{
+    task: ITask[],
+    selectedTask: (selectedTask: ITask) => void
+}
+//recebe um parametro tipado e retorna nada
 
-function List({tasks} : {tasks: ITask[]}) {
-
-
+//props que é recebido do app e atribuindo a tipagem que ta la no modulo ITasks
+function List({task, selectedTask}: Props) {
     return (
         <aside className={style.listaTarefas}>
             <h2>Studies of the day:</h2>
-            <ul>{tasks.map((item, index) => (
+            <ul>{task.map((item, index) => (
                        <Item 
-                       key={index}
-                       task={item.activity} time={item.time}/>
+                       selectedTask={selectedTask}
+                       key={item.id}
+                       task={item.task} time={item.time}/>
                     ))}
-                    </ul>
+                    </ul> 
         </aside>
     );
 }

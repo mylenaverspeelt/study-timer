@@ -2,23 +2,26 @@ import React from "react";
 import { ITask } from "../../types/ITasks";
 import Button from "../Button/Button";
 import style from "./formStyles.module.scss";
-
+import {v4 as uuidv4} from 'uuid'
 //no class component pra acessar as props é diferente, como ele é stateful, o state/setState já vem com ele, é só criar um objeto state com o valor inicial e depois chamar a função de setSatate
 
+
+//tipando a props de setTasks que é passada do app pro componente form/ o valor dela no caso é esse modulo I que ta na pasta types
 class Form extends React.Component<{
-  setTasks: React.Dispatch<React.SetStateAction<ITask[]>>
+  setTask: React.Dispatch<React.SetStateAction<ITask[]>>
 }> {
   state = {
-    activity: "",
+    task: "",
     time: "00:00",
   };
 
   //forma de tipar evento de formulario
   addTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    this.props.setTasks(prevValue => [...prevValue, {...this.state}]);
+    this.props.setTask(prevValue => 
+      [...prevValue, {...this.state, selected: false, completed: false, id: uuidv4()}]);
     this.setState({
-      activity: "",
+      task: "",
       time: "00:00"
     })
   }
@@ -36,10 +39,10 @@ class Form extends React.Component<{
           <input
             type="text"
             name="task"
-            value={this.state.activity}
+            value={this.state.task}
             //atribuir o value do input de acordo com o que o usuário colocar pois o state vai mudar consequentemente
             onChange={(e) =>
-              this.setState({ ...this.state, activity: e.target.value })
+              this.setState({ ...this.state, task: e.target.value })
             }
             //onchange pra pegar modificações do input, pega o evento e seta o state com o valor anterior do state e adiciona a tarefa/input do usuario que é o task, e ele é o target value do evento.
             placeholder="What do you want to study?"
