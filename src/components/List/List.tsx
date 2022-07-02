@@ -17,7 +17,8 @@ function List({task, selectedTask}: Props) {
             <ul>{task.map((item, index) => (
                        <Item 
                        selectedTask={selectedTask}
-                       key={item.id}
+                       id={item.id}
+                       completed={false} selected={false}
                        task={item.task} time={item.time}/>
                     ))}
                     </ul> 

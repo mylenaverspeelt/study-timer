@@ -1,6 +1,6 @@
 //por ser um function component não precisa importar o react
 import { ITask } from "../../../types/ITasks";
-import style from "../listStyles.module.scss";
+import style from "./ItemStyles.module.scss";
 
 interface Props extends ITask {
   selectedTask: (selectedTask: ITask) => void;
@@ -15,21 +15,23 @@ export default function Item({
   selectedTask,
 }: Props) {
   return (
-    <li
-      key={"key"}
-      className={`${style.item} ${selected ? style.itemSelecionado : ""}`}
-      onClick={() =>
-        selectedTask({
-          task,
-          time,
-          selected,
-          completed,
-          id,
-        })
-      }
-    >
-      <h3>{task}</h3>
-      <span>{time}</span>
-    </li>
+    <>
+      <li
+        key={"key"}
+        className={`${style.item} ${selected ? style.itemSelecionado : ""}`}
+        onClick={() =>
+          selectedTask({
+            task,
+            time,
+            selected,
+            completed,
+            id,
+          })
+        }
+      >
+        <h3>{task}</h3>
+        <span>{time}</span>
+      </li>
+    </>
   );
 }
