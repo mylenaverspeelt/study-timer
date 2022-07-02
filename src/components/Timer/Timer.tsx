@@ -20,9 +20,8 @@ export default function Timer({ selected }: Props) {
   return (
     <div className={style.cronometro}>
       <p className={style.titulo}>Choice a card and start the timer</p>
-      Tempo: {time}
       <div className={style.relogioWrapper}>
-        <Clock />
+        <Clock time={time}/>
       </div>
       <Button text="Start" />
     </div>
