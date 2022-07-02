@@ -14,11 +14,11 @@ function List({task, selectedTask}: Props) {
     return (
         <aside className={style.listaTarefas}>
             <h2>Studies of the day:</h2>
-            <ul>{task.map((item, index) => (
+            <ul>{task.map((item) => (
                        <Item 
                        selectedTask={selectedTask}
                        id={item.id}
-                       completed={false} selected={false}
+                       completed={item.completed} selected={item.selected}
                        task={item.task} time={item.time}/>
                     ))}
                     </ul> 

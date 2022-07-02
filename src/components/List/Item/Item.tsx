@@ -17,8 +17,7 @@ export default function Item({
   return (
     <>
       <li
-        key={"key"}
-        className={`${style.item} ${selected ? style.itemSelecionado : ""}`}
+        className={`${style.item} ${selected ? style.itemSelecionado : ''}`}
         onClick={() =>
           selectedTask({
             task,

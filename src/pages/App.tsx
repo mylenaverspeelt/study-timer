@@ -14,13 +14,13 @@ function App() {
 
   function selectedTask(selectedTask: ITask) {
     setSelected(selectedTask)
-    setTask(prevValue => prevValue.map(task => ({...task, selected: task.id === selectedTask.id ? true: false})))
+    setTask(prevValue => prevValue.map(task => ({...task, selected: task.id === selectedTask.id ? true : false})))
   }
 
   return (
     <div className={style.AppStyle}>
       <Form setTask={setTask} />
-      <Timer />
+      <Timer selected={selected} />
       <List task={task} selectedTask={selectedTask} />
     </div>
   );
