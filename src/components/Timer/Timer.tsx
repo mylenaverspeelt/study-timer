@@ -7,23 +7,34 @@ import { useEffect, useState } from "react";
 
 interface Props {
   selected: ITask | undefined;
+  finishTask: () => void
 }
 
-export default function Timer({ selected }: Props) {
+export default function Timer({ selected, finishTask}: Props) {
   const [time, setTime] = useState<number>();
- useEffect(() =>{
-  if(selected?.time){
-    setTime(timeToSeconds(selected.time))
+  useEffect(() => {
+    if (selected?.time) {
+      setTime(timeToSeconds(selected.time));
+    }
+  }, [selected]);
+
+  function countdown(count: number = 0) {
+    setTimeout(() => {
+      if (count > 0) {
+        setTime(count - 1);
+        return countdown(count - 1);
+      }
+      finishTask();
+    }, 1000);
   }
- }, [selected])
 
   return (
     <div className={style.cronometro}>
       <p className={style.titulo}>Choice a card and start the timer</p>
       <div className={style.relogioWrapper}>
-        <Clock time={time}/>
+        <Clock time={time} />
       </div>
-      <Button text="Start" />
+      <Button onClick={() => countdown(time)} text="Start" />
     </div>
   );
 }

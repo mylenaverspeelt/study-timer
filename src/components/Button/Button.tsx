@@ -3,14 +3,14 @@ import style from './buttonStyles.module.scss'
 
 //CLASS COMPONENT (tem que extender um react component e tem uma função render obrigatoria que retorna o JSX)
 //? pois é um props opcional, que só aceita determinados valores pré-estabelecidos.
-class Button extends React.Component<{type?: "button" | "submit" | "reset" | undefined, text: string }>{
+class Button extends React.Component<{type?: "button" | "submit" | "reset" | undefined, text: string, onClick?: () => void }>{
     
     render(){
 
-        const{ type = "button" }= this.props
+        const{ type = "button", onClick }= this.props
         
         return(
-            <button className={style.botao} type={type}>
+            <button onClick={onClick} className={style.botao} type={type}>
                 {this.props.text}
             </button>
         )
