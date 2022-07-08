@@ -2,6 +2,7 @@
 
 A stopwatch where you can define the subject you want to study and set a time. When time's up, it becomes completed
 
+<img src="./src/assets/img/read-me-img.png"/>
 
 ## Step 1 - Dependencies
 
